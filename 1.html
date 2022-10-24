@@ -1,0 +1,33 @@
+    <div ng-controller="miControlador">
+        <ul>
+            <li ng-repeat="libro in libros | filter:buscar | orderBy:orden"
+                class="d-flex justify-content-center mt-4">
+                <div class="card bg-secondary bg-success p-2 text-dark bg-opacity-75" style="width: 25rem">
+                    <div ng-view class="card-body">
+                        <div class="dropdown">
+                            <h4 class="card-tittle">
+                                <a href='#{{libro.id}}' class="text-dark">
+                                    {{libro.titulo}}
+
+                                </a>
+                                
+                            </h4>
+                        </div>
+                        <h5 class="card-title">
+                            {{libro.autor}}
+                        </h5>
+                        <h6 class="card-subtitle mb-2 ">
+                            {{libro.editorial}}
+                        </h6>
+                        <div class="row mt-3">
+                            <img src={{libro.img}}>
+                        </div>
+                        <div class="mt-4 mb-4">
+                            {{libro.descripcion}}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    

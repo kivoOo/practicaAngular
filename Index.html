@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+
+<body ng-app="miApp" class="bg-secondary">
+    <div class="container bg-secondary bg-secondary bg-success p-2 text-dark bg-opacity-50">
+        <div class="row ">
+            <div class="col d-flex justify-content-center">
+                <h1>
+                    LIBRERIA PACO
+                </h1>
+            </div>
+        </div>
+        <div class="row mt-4 bg-light bg-secondary bg-success p-2 text-dark bg-opacity-25">
+            <div class="col-4">
+                <p class="d-flex justify-content-center">
+                <h3 class="d-flex justify-content-center">
+                    Buscar
+                </h3>
+                </p>
+                <p class="d-flex justify-content-center">
+                    Titulo : <input type="text" ng-model="buscar.titulo">
+                </p>
+            </div>
+            <div class="col-4">
+
+            </div>
+            <div class="col-4">
+                <p class="d-flex justify-content-center">
+                <h3>
+                    Ordenar
+                </h3>
+                </p>
+                <select name="orden" id="orden" ng-model="orden">
+                    <option value="titulo">titulo</option>
+                    <option value="editorial">editorial</option>
+                </select>
+            </div>
+
+        </div>
+        <div ng-controller="miControlador">
+            <ul>
+                <li ng-repeat="libro in libros | filter:buscar:strict | orderBy:orden"
+                    class="d-flex justify-content-center mt-4">
+                    <div class="card bg-secondary bg-success p-2 text-dark bg-opacity-75" style="width: 25rem">
+                        <div ng-view class="card-body">
+                            <div class="dropdown">
+                                <h4 class="card-tittle">
+                                    <a href='#{{libro.id}}.html' class="text-dark">
+                                        {{libro.titulo}}
+
+                                    </a>
+                                    
+                                </h4>
+                            </div>
+                            <h5 class="card-title">
+                                {{libro.autor}}
+                            </h5>
+                            <h6 class="card-subtitle mb-2 ">
+                                {{libro.editorial}}
+                            </h6>
+                            <div class="row mt-3">
+                                <img src={{libro.img}}>
+                            </div>
+                            <div class="mt-4 mb-4">
+                                {{libro.descripcion}}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.7/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.3/angular-route.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
